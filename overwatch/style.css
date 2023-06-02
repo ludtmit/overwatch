@@ -1,0 +1,96 @@
+:root{
+    --oddColor:#f2f2f2;
+    --evenColor:#ffffff;
+    --fontFamily:'Courier New', Courier, monospace;
+    --size: 20px:
+}
+html{
+    font-size: var(--size);
+    font-family: var(--fontFamily);
+}
+ul li:nth-child(odd) {
+    background-color: var(--oddColor);
+}
+ul li:nth-child(even){
+    background-color: var(--evenColor);
+}
+ul li{
+    list-style-type: none;
+    font-family: var(--fontFamily);
+    font-size: 2.5rem;
+    min-height: 4rem;
+    display:flex;
+    align-items: center;
+    padding:0;
+    margin:0;
+    padding-left: 3%;
+    
+}
+ul{
+    margin-top: 4%;
+}
+.myListOrg{
+    margin-top: 3rem;
+}
+.addButton{
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    list-style-type: none;
+    font-family: var(--fontFamily);
+    font-size: 2.5rem;
+    min-height: 3rem;
+    vertical-align: 40%;
+}
+
+.imgZoom{
+    transform: scale(1.75);
+}
+
+.searchBar{
+    min-height: 2.5rem;
+    min-width: none;
+    border:none;
+    background-color: rgba(128, 128, 128, 0.25);
+    vertical-align: 40%;
+    text-indent: 1rem;
+    border-radius: .3rem;
+}
+ul li img{
+    height: 3rem;
+    margin-right: 1rem;
+}
+li button img{
+    vertical-align: -17.5%;
+    padding-inline: .45rem;
+
+}
+.submit{
+    margin-left: .5rem;
+    border-radius: .4rem;
+    border-color:rgba(128, 128, 128, 0.25);
+    vertical-align: 40%;
+}
+
+.checkLabel{
+    font-size: 1rem;
+}
+.checkboxContainer{
+    display: flex;
+    flex-direction: column;
+    padding-inline: 2.5%;
+    
+}
+.roleIcon{
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+    padding-left: 1rem;
+    /*-webkit-filter: invert(100%); 
+    filter: invert(50%);*/
+}
+
+ /*#Tank2Icon {
+    
+}
