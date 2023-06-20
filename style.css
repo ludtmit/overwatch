@@ -18,7 +18,7 @@ ul li{
     list-style-type: none;
     font-family: var(--fontFamily);
     font-size: 2.5rem;
-    min-height: 4rem;
+    min-height: 5rem;
     display:flex;
     align-items: center;
     padding:0;
@@ -77,12 +77,63 @@ li button img{
 .checkLabel{
     font-size: 1rem;
 }
-.checkboxContainer{
-    display: flex;
-    flex-direction: column;
-    padding-inline: 2.5%;
-    
+
+
+@keyframes rotateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
+
+@keyframes upDown{
+  0%{
+    background-position: 0 0;
+  }
+  50%{
+    background-position: 0 100%;
+  }
+  100%{
+    background-position: 0 0;
+  }
+}
+
+
+  li:nth-child(even) .checkboxContainer {
+    background: linear-gradient(to right, #f97068, #e68b86, #f76058, #f18767);
+    background-size: 200% 200%; /* Adjust the size as needed */
+    animation: upDown 8s linear infinite;
+    
+  }
+  
+  li:nth-child(odd) .checkboxContainer {
+    background: conic-gradient(from 0deg at 100% 100%, #fa577d, #ef476f, #f37592);
+    background-size: 200%; /* Adjust the size as needed */
+    animation: rotateGradient 8s linear infinite;
+    animation-delay: .3s;
+  }
+  
+  
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  padding: .8rem .45rem .8rem .45rem;
+  /*border: 1px solid black;*/
+  border-radius: .3rem;
+    -webkit-user-select: none; /* Disable text selection for Chrome, Safari, and Opera */
+    -moz-user-select: none; /* Disable text selection for Firefox */
+    -ms-user-select: none; /* Disable text selection for Internet Explorer and Edge */
+    user-select: none; /* Disable text selection for supported browsers */
+    
+  }
+  
+
 .roleIcon{
     max-width: 1.5rem;
     max-height: 1.5rem;
@@ -91,6 +142,33 @@ li button img{
     filter: invert(50%);*/
 }
 
- /*#Tank2Icon {
-    
+ .spaceDiv{
+    padding:1.5%
+ }
+
+ img {
+    -webkit-user-drag: none; /* For Safari */
+  }
+
+
+.xIconDiv{
+  background-color: rgb(231, 77, 77);
+  max-height:2rem;
+  max-width:2rem;
+  position:absolute;
+  right: 1.5rem;
+  border-radius: .25rem;
+}
+.xIcon{
+  max-height:2rem;
+  max-width:2rem;
+}
+.checkboxNest{
+  display:flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+  overflow:auto;
+  max-width:22rem;
 }

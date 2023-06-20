@@ -4,6 +4,8 @@ const buttonListItem = addButton.parentNode;
 let count = 0;
 const maxRows = 5;
 
+
+//add Button creates a new line for a new player
 addButton.addEventListener('click', function() {
   if (count >= maxRows) {
     addButton.style.display = 'none';
@@ -16,6 +18,10 @@ addButton.addEventListener('click', function() {
   const newSearch = document.createElement('input');
   const newSubmit = document.createElement('input');
 
+  newForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+  });
+  
   newIcon.src = 'https://upload.wikimedia.org/wikipedia/commons/5/55/Overwatch_circle_logo.svg';
   newIcon.alt = 'Icon';
 
@@ -41,28 +47,49 @@ addButton.addEventListener('click', function() {
     'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Support_icon.svg/1200px-Support_icon.svg.png',
     'https://icons.veryicon.com/png/o/business/comprehensive-budget-management/flexible.png'
   ];
-
+  
+  const checkboxNest = document.createElement('div');
+  checkboxNest.className = 'checkboxNest';
+  newItem.appendChild(checkboxNest);
+//creating the checkboxes and the surrounding area
   for (let i = 0; i < options.length; i++) {
     const container = document.createElement('div');
     container.className = 'checkboxContainer';
-
+  
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.id = options[i] + count;
     checkbox.addEventListener('change', handleCheckboxChange); // Add event listener
-
+  
     const roleIcon = document.createElement('img');
     roleIcon.src = roleIcons[i];
     roleIcon.alt = options[i];
     roleIcon.className = 'roleIcon';
     roleIcon.id = options[i] + count + 'Icon';
-
+  
+    
+  
+    container.addEventListener('click', function() {
+      checkbox.click();
+    });
+  
     container.appendChild(roleIcon);
     container.appendChild(checkbox);
-    newItem.appendChild(container);
+    checkboxNest.appendChild(container);
+    
   }
+  
 
   list.insertBefore(newItem, buttonListItem);
+
+  const xIconDiv = document.createElement('div');
+  xIconDiv.className = 'xIconDiv';
+  
+  const xIcon = document.createElement('img');
+  xIcon.src = "https://cdn0.iconfinder.com/data/icons/octicons/1024/x-512.png";
+  xIcon.className = 'xIcon'
+  xIconDiv.appendChild(xIcon);
+  newItem.appendChild(xIconDiv);
 
   count++;
 
@@ -71,20 +98,34 @@ addButton.addEventListener('click', function() {
   }
 });
 
-// Event listener for checkbox change
+// Event listener for checkbox change -ChatGpt
 function handleCheckboxChange() {
   const current = this.id;
 
   if (current.startsWith('Flex')) {
     const row = this.closest('li');
     const checkboxes = row.querySelectorAll('.checkboxContainer input[type="checkbox"]');
+    const flexCheckbox = row.querySelector('#' + current);
+
     checkboxes.forEach(function(checkbox) {
-      if (checkbox.id !== current) {
-        checkbox.checked = current.checked;
+      if (checkbox !== flexCheckbox) {
+        checkbox.checked = flexCheckbox.checked;
       }
     });
   }
 }
 
+
+
 // Initially load the first row
 addButton.click();
+//gives checkbox change to all of the checkboxes
+for (i = 0; i<count; i++){
+  for (j = 0; j<4; j++){
+    options[count]+j.addEventListener('change', handleCheckboxChange);
+  
+  }
+}
+
+
+
